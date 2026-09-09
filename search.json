@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 9, 2026\n\n\nArthur Cary\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "Arthur Cary is a Senior Engineering major at Harvey Mudd College. He has interests in electrical and computer engineering and is enrolled in E155, microprocessor system and design. Arthur grew up in the Central Coast of California."
+  },
+  {
+    "objectID": "posts/first-post.html",
+    "href": "posts/first-post.html",
+    "title": "Hello Quarto",
+    "section": "",
+    "text": "E155 Lab 1 taught me a lot of lessons in time management and breaking up tasks. I hope to build on this progess to learn more about FPGAs and microprocessors. I also hope to become more efficient at the testing phase of each project."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html",
+    "href": "labs/lab1/lab1.html",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "",
+    "text": "In lab 1, we were tasked with assembling the microP’s board, and demonstrate that the onboard oscillator, 4 bit switch, and LEDs function, in conjunction with an external seven segment display. The HSOSC from Lattice ICE40 Ultra Plus that was configured to generate a 48MHz clock was parted down to produce a blinking LED signal of 2.4Hz. Combinational logic of XOR and AND was subsequently implemented to test the LED switch inputs."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#introduction",
+    "href": "labs/lab1/lab1.html#introduction",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "",
+    "text": "In lab 1, we were tasked with assembling the microP’s board, and demonstrate that the onboard oscillator, 4 bit switch, and LEDs function, in conjunction with an external seven segment display. The HSOSC from Lattice ICE40 Ultra Plus that was configured to generate a 48MHz clock was parted down to produce a blinking LED signal of 2.4Hz. Combinational logic of XOR and AND was subsequently implemented to test the LED switch inputs."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#design-and-testing-methodology",
+    "href": "labs/lab1/lab1.html#design-and-testing-methodology",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nFirst, the microP’s development board was soldered together, and verified through the use of a tutorial. The power rails were verified, and test code for the FPGA and MCU validated that it was functional. For the FPGA System Verilog code, the process includes an internal oscillator, a clock divider, a seven segment display, and LED control logic. This system was subsequently verified through the use of a testbench in Questa waveform simulations. After this verification, the system was tested on the hardware in order to check if the proper LED and seven segment display outputs appeared with the appropriate switch input. ## Technical Documentation\nThe source of this lab can be found at"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#block-diagram",
+    "href": "labs/lab1/lab1.html#block-diagram",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Block Diagram",
+    "text": "Block Diagram\n[Fig1. Block diagram of the system]"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#schematic",
+    "href": "labs/lab1/lab1.html#schematic",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Schematic",
+    "text": "Schematic\n[Fig2. Component schematics] \n[Fig 3. Resistor and CLK calculations]"
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#results-and-discussion",
+    "href": "labs/lab1/lab1.html#results-and-discussion",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\nTestbench Simulation\n[Fig. 4 Decoder simulation waveforms] \n[Fig. 5: blinker simulation wave forms] \n[Fig. 6: top level decoder simulation wave forms] \n[Fig. 7: top level blinker simulation wave forms] \nThe design met all of the intended objectives. The figures above display the Questa Waveform simulation. In order to achieve more precision in the future, a more sophisticated counter would be needed."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#conclusion",
+    "href": "labs/lab1/lab1.html#conclusion",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design met all of the requirements and it successfully display the correct hexadecimal digits. The LED logic is correct and functional as well, and all of the hardware has been verified. In total, this lab took approximately 16 hours to complete. The most tedious part was creating the testbenches and debugging Quarto."
+  },
+  {
+    "objectID": "labs/lab1/lab1.html#ai-prototype",
+    "href": "labs/lab1/lab1.html#ai-prototype",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "AI Prototype",
+    "text": "AI Prototype\n\n\n\n\n\n\nNoteAI Generated Code\n\n\n\n\n\n`default_nettype none\n\nmodule led_blinker_2hz (\n    output logic led\n);\n\n    // ------------------------------------------------------------------------\n    // Lattice iCE40 UltraPlus internal high-frequency oscillator.\n    //\n    // CLKHF_DIV:\n    //   \"0b00\" = 48 MHz\n    //   \"0b01\" = 24 MHz\n    //   \"0b10\" = 12 MHz\n    //   \"0b11\" =  6 MHz\n    //\n    // 12 MHz is plenty for an LED and keeps the counter relatively small.\n    // ------------------------------------------------------------------------\n    logic clk_hf;\n\n    SB_HFOSC #(\n        .CLKHF_DIV(\"0b10\")\n    ) hfosc_inst (\n        .CLKHFEN (1'b1),\n        .CLKHFPU (1'b1),\n        .CLKHF   (clk_hf)\n    );\n\n    // ------------------------------------------------------------------------\n    // 12 MHz / (2 Hz * 2) = 3,000,000 clocks per LED toggle.\n    //\n    // The LED therefore completes one full on/off cycle every 0.5 seconds,\n    // giving a blink frequency of 2 Hz.\n    // ------------------------------------------------------------------------\n    localparam int unsigned TOGGLE_COUNT = 3_000_000 - 1;\n\n    logic [$clog2(TOGGLE_COUNT + 1)-1:0] counter = '0;\n\n    always_ff @(posedge clk_hf) begin\n        if (counter == TOGGLE_COUNT) begin\n            counter &lt;= '0;\n            led     &lt;= ~led;\n        end\n        else begin\n            counter &lt;= counter + 1'b1;\n        end\n    end\n\nendmodule\n\n`default_nettype wire\n\n\n\nFor this AI Prototype, I used a free version of ChatGPT, and I did not sign into an account. I entered in the provided prompt and it gave me a result. When I ran the result in Radiant, it threw an error saying that HSOSC was incorrect and the value assigned to it didn’t exist. I then went to correct this error in the LLM, and I tried the new result. It gave me a similar error, and I did not attempt to debug this any further."
+  },
+  {
+    "objectID": "labs.html",
+    "href": "labs.html",
+    "title": "E155 Labs",
+    "section": "",
+    "text": "Lab 1: FPGA and MCU Setup and Testing\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nEArthur Cary\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "The E155 Website at HMC E155"
+  }
+]
