@@ -1,0 +1,12 @@
+---
+title: "Hello Quarto"
+description: "Welcome to my Quarto portfolio"
+author: "Arthur Cary"
+date: "09/09/2026"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+E155 Lab 1 taught me a lot of lessons in time management and breaking up tasks. I hope to build on this progess to learn more about FPGAs and microprocessors. I also hope to become more efficient at the testing phase of each project. 

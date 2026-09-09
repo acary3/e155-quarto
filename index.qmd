@@ -1,0 +1,15 @@
+---
+title: "E155 Portfolio"
+image: images/headshot.jpeg
+about:
+    template: jolla
+    links: 
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/acary
+        - icon: github
+          text: Github
+          href: https://github.com/acary3
+---
+
+Arthur Cary is a Senior Engineering major at [Harvey Mudd College](https://hmc.edu). He has interests in electrical and computer engineering and is enrolled in E155, microprocessor system and design. Arthur grew up in the Central Coast of California. 
