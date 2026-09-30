@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "E155 Blog",
     "section": "",
-    "text": "Hello Quarto, Again\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 16, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nHello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 9, 2026\n\n\nArthur Cary\n\n\n\n\n\nNo matching items"
+    "text": "Hello Quarto (v4)\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 30, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nHello Quarto, Once More\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 23, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nHello Quarto, Again\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 16, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nHello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nSep 9, 2026\n\n\nArthur Cary\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -19,6 +19,69 @@
     "title": "Hello Quarto, Again",
     "section": "",
     "text": "E155 Lab 2 taught me the skill of hardware debugging and the tough lesson of planning schematics beforehand. I hope to apply these lessons to lab 3, and continue building from there."
+  },
+  {
+    "objectID": "posts/fourth-post.html",
+    "href": "posts/fourth-post.html",
+    "title": "Hello Quarto (v4)",
+    "section": "",
+    "text": "This week we began working with the MCU, and it was a breath of fresh air. I believe that I gained valuable experience working with the FPGA in labs 1-3, but I quickly found out that I much prefer to use an MCU."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html",
+    "href": "labs/lab4/lab4.html",
+    "title": "Lab 4: Digital Audio",
+    "section": "",
+    "text": "In lab 4, we were tasked with using the STM32L432KC microcontroller to play music on an external peripheral. The MCU reads a list of notes, where each note gives a pitch in Hz and a duration in ms, and generates the matching sequence of square waves on a GPIO pin. A pitch of 0 Hz is a rest, and a duration of 0 ms marks the end of the song. The GPIO pins cannot supply enough current to drive a speaker directly, so the square wave passes through an LM386 audio amplifier before reaching an 8 Ω speaker."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#introduction",
+    "href": "labs/lab4/lab4.html#introduction",
+    "title": "Lab 4: Digital Audio",
+    "section": "",
+    "text": "In lab 4, we were tasked with using the STM32L432KC microcontroller to play music on an external peripheral. The MCU reads a list of notes, where each note gives a pitch in Hz and a duration in ms, and generates the matching sequence of square waves on a GPIO pin. A pitch of 0 Hz is a rest, and a duration of 0 ms marks the end of the song. The GPIO pins cannot supply enough current to drive a speaker directly, so the square wave passes through an LM386 audio amplifier before reaching an 8 Ω speaker."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#design-and-testing-methodology",
+    "href": "labs/lab4/lab4.html#design-and-testing-methodology",
+    "title": "Lab 4: Digital Audio",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nStarting off, I configured the system clock so that every timer calculation would rest on a known frequency. I selected the 4 MHz MSI oscillator (MSI range 6) as the system clock and set the AHB, APB1, and APB2 prescalers to /1. When the APB prescaler is 1, the timer clock equals the APB clock. Both timers in this design therefore run from a 4 MHz clock. This is also the chip’s reset state, but setting it explicitly in configureSystemClock() guarantees the math holds even if startup code changes the clock.\nFor pitch generation, I used TIM16 in PWM mode 1, with its channel 1 output routed to pin PA6. I set the prescaler so the counter runs at 1 MHz, which gives 1 µs of resolution per count: \\(f_CNT = f_CLK / (PSC + 1) = 4 MHz / (3 + 1) = 1 MHz\\)\nFor note durations, I used TIM15 as a blocking delay timer. I set its prescaler so the counter runs at 10 kHz, giving 0.1 ms per count: \\(f_CNT = 4 MHz / (399 + 1) = 10 kHz\\)\nThe update interrupt flag (UIF) is set after ARR + 1 counts, so the ARR for a duration of d milliseconds is: \\(ARR = 10 × d − 1\\)\nFor the hardware, I used an LM386 amplifier in its default gain-of-200 configuration. The LM386 datasheet lists an absolute maximum input of ±0.4 V, but the MCU outputs a 3.3 V square wave, so the signal has to be attenuated before it reaches the amplifier. A 150 kΩ series resistor feeds a 10 kΩ volume potentiometer, and the pot’s wiper drives LM386 pin 3.\nBefore connecting the speaker, I verified the PA6 and LM386 outputs on the oscilloscope to confirm the signal frequency and amplitude, as the lab instructions recommended."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#technical-documentation",
+    "href": "labs/lab4/lab4.html#technical-documentation",
+    "title": "Lab 4: Digital Audio",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation"
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#schematic",
+    "href": "labs/lab4/lab4.html#schematic",
+    "title": "Lab 4: Digital Audio",
+    "section": "Schematic",
+    "text": "Schematic\n[Fig 2. LM386 with Gain = 200. Includes 10k ohm linear potentiometer LM386 power amp, and a 1w speaker]"
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#results-and-discussion",
+    "href": "labs/lab4/lab4.html#results-and-discussion",
+    "title": "Lab 4: Digital Audio",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\nThe design met all of the intended objectives. Für Elise played at the correct tempo, the rests were silent for their full durations, and the potentiometer controlled the volume smoothly across its full range. The extra composition, Ode to Joy, also played correctly. Each of its notes is followed by a 20 ms rest, so that repeated notes sound as separate notes instead of blending into one long tone.\nThe design meets all of the requirements in the specification in the following ways:\nHardware: Für Elise plays from the provided starter code with correct durations and rests, through a correctly wired LM386 amplifier. A potentiometer controls the volume, and an extra composition plays after Für Elise. Software: The design uses two timer peripherals (TIM15 and TIM16), accessed through #define macros and register structs in the format from class. It never divides by zero, and it rejects frequencies it cannot produce accurately. Documentation: The calculations above relate pitches and durations to the timer configuration, show 220 Hz and 1000 Hz within 1%, give the minimum and maximum duration and frequency, and show every note in Für Elise within 1%.\nAll frequency and duration calculations assume the nominal 4 MHz MSI clock. The MSI oscillator’s own tolerance adds a small error on top of these figures. In the future, locking the MSI to the Nucleo’s 32.768 kHz LSE crystal (MSI PLL mode) would make the pitches track a more accurate reference."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#conclusion",
+    "href": "labs/lab4/lab4.html#conclusion",
+    "title": "Lab 4: Digital Audio",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design met all of the requirements. It successfully plays Für Elise and Ode to Joy at the correct pitches and tempo, with rests played as silence. The two-timer approach worked well: TIM16 generates each pitch in hardware to within 0.03%, and TIM15 times each note exactly. The LM386 circuit drives the speaker with smooth volume control. This lab took me about 9 hours to complete in its enirety."
+  },
+  {
+    "objectID": "labs/lab4/lab4.html#ai-prototype",
+    "href": "labs/lab4/lab4.html#ai-prototype",
+    "title": "Lab 4: Digital Audio",
+    "section": "AI Prototype",
+    "text": "AI Prototype\n\n\n\n\n\n\nNoteAI Generated Code\n\n\n\n\n\n`default_nettype none\nFor the STM32L432KC, I would use TIM2 in PWM output mode, with TIM2_CH1 on PA0. TIM2 is a particularly convenient choice because it is a 32-bit general-purpose timer, has multiple GPIO alternate-function outputs, and its large counter gives you plenty of flexibility over the 220 Hz–1 kHz range.\n\n1. Timer choices\n\nThe L432 has several timer types:\n\nTimer   Type    GPIO waveform output?   Recommendation\nTIM2    32-bit general purpose  Yes Best general choice\nTIM1    16-bit advanced Yes Good, but more features than needed\nTIM15   16-bit general purpose  Yes Good\nTIM16   16-bit  Yes Good\nTIM17   16-bit  Yes Good\nTIM6    Basic   No  Not suitable for directly driving GPIO\nTIM7    Basic   No  Not suitable for directly driving GPIO\n\nFor a simple frequency generator, TIM2_CH1 → PA0 is probably the cleanest arrangement.\n\nTIM2 can generate the waveform completely in hardware, so the CPU does not have to toggle the GPIO at every cycle.\n\nBasic PWM frequency formula\nFor a timer running from timer clock \\(f_{TIM}\\):\n\n$$ f_{PWM} = \\frac{f_{TIM}} {(PSC+1)(ARR+1)} $$\n\nwhere:\n\nPSC = prescaler register\nARR = auto-reload register\nf_TIM = timer input clock\nf_PWM = desired output frequency\n\nFor example, suppose you configure the STM32 clock so that TIM2 receives 80 MHz.\n\nYou could choose:\n\n$$ PSC=79 $$\n\nwhich gives a timer counter frequency of:\n\n$$ f_{CNT}=\\frac{80\\,MHz}{79+1}=1\\,MHz $$\n\nNow the timer increments once every microsecond.\n\nThe required ARR becomes:\n\n$$ ARR=\\frac{1\\,MHz}{f_{OUT}}-1 $$\n\nSo for 1 kHz:\n\n$$ ARR=\\frac{1,000,000}{1000}-1=999 $$\n\nand for 220 Hz:\n\n$$ ARR=\\frac{1,000,000}{220}-1 \\approx4544.45 $$\n\nSince ARR must be an integer, you would use 4544, producing approximately:\n\n$$ f=\\frac{1,000,000}{4545} \\approx220.022\\,Hz $$\n\nThat's an error of only about 0.01%.\n\nGenerating a 50% duty-cycle waveform\nFor a square wave, you probably want approximately 50% duty cycle.\n\nIn PWM mode:\n\n$$ Duty=\\frac{CCR1}{ARR+1} $$\n\nso approximately 50% duty cycle is obtained with:\n\n$$ CCR1=\\frac{ARR+1}{2} $$\n\nFor example, at 1 kHz:\n\nPSC  = 79\nARR  = 999\nCCR1 = 500\n\ngiving approximately 50% duty cycle.\n\nAt 220 Hz:\n\nPSC  = 79\nARR  = 4544\nCCR1 = 2272\n4. Why TIM2_CH1 → PA0 is convenient\n\nPA0 has an alternate-function connection to TIM2_CH1.\n\nInstead of doing:\n\nGPIOA-&gt;ODR ^= ...\n\nin software, you configure PA0 for the TIM2 alternate function and let the timer peripheral drive it.\n\nConceptually:\n\n                 TIM2\n                   |\n             Channel 1\n                   |\n                   v\n              TIM2_CH1\n                   |\n                   v\n                  PA0\n                   |\n                   v\n              GPIO output\n\nThe timer autonomously generates:\n\n     ┌─────┐     ┌─────┐\n     │     │     │     │\n─────┘     └─────┘     └─────\n\nwith the frequency determined by PSC and ARR.\n\nThis is substantially better than using an interrupt to toggle PA0 because the hardware-generated signal has much less jitter and doesn't consume CPU time every half-cycle.\n\nRegisters you need\nFor a bare-metal implementation, the important registers are roughly:\n\nRCC\n\nEnable the timer peripheral:\n\nRCC-&gt;APB1ENR1 |= RCC_APB1ENR1_TIM2EN;\n\nYou also need to enable the GPIOA peripheral:\n\nRCC-&gt;AHB2ENR |= RCC_AHB2ENR_GPIOAEN;Once the LLM responds, review the answer and compare it with your decision-making process.\n`default_nettype wire\n\n\n\nFor this AI Prototype, I used a free version of ChatGPT, and I did not sign into an account. I entered in the provided prompt and it gave me a result. The conceptual explanation was fairly strong: the PWM frequency formula, the worked 220 Hz example with error analysis, and the argument for hardware PWM over ISR toggling were all correct and clearly presented. The response fell short on specifics that matter for bare-metal code. It listed TIM17, which isn’t on the L432KC, and it assumed an 80 MHz timer clock without mentioning that the chip boots at 4 MHz on MSI."
   },
   {
     "objectID": "labs/lab2/lab2.html",
@@ -140,6 +203,76 @@
     "text": "AI Prototype\n\n\n\n\n\n\nNoteAI Generated Code\n\n\n\n\n\n`default_nettype none\n\nmodule led_blinker_2hz (\n    output logic led\n);\n\n    // ------------------------------------------------------------------------\n    // Lattice iCE40 UltraPlus internal high-frequency oscillator.\n    //\n    // CLKHF_DIV:\n    //   \"0b00\" = 48 MHz\n    //   \"0b01\" = 24 MHz\n    //   \"0b10\" = 12 MHz\n    //   \"0b11\" =  6 MHz\n    //\n    // 12 MHz is plenty for an LED and keeps the counter relatively small.\n    // ------------------------------------------------------------------------\n    logic clk_hf;\n\n    SB_HFOSC #(\n        .CLKHF_DIV(\"0b10\")\n    ) hfosc_inst (\n        .CLKHFEN (1'b1),\n        .CLKHFPU (1'b1),\n        .CLKHF   (clk_hf)\n    );\n\n    // ------------------------------------------------------------------------\n    // 12 MHz / (2 Hz * 2) = 3,000,000 clocks per LED toggle.\n    //\n    // The LED therefore completes one full on/off cycle every 0.5 seconds,\n    // giving a blink frequency of 2 Hz.\n    // ------------------------------------------------------------------------\n    localparam int unsigned TOGGLE_COUNT = 3_000_000 - 1;\n\n    logic [$clog2(TOGGLE_COUNT + 1)-1:0] counter = '0;\n\n    always_ff @(posedge clk_hf) begin\n        if (counter == TOGGLE_COUNT) begin\n            counter &lt;= '0;\n            led     &lt;= ~led;\n        end\n        else begin\n            counter &lt;= counter + 1'b1;\n        end\n    end\n\nendmodule\n\n`default_nettype wire\n\n\n\nFor this AI Prototype, I used a free version of ChatGPT, and I did not sign into an account. I entered in the provided prompt and it gave me a result. When I ran the result in Radiant, it threw an error saying that HSOSC was incorrect and the value assigned to it didn’t exist. I then went to correct this error in the LLM, and I tried the new result. It gave me a similar error, and I did not attempt to debug this any further."
   },
   {
+    "objectID": "labs/lab3/lab3.html",
+    "href": "labs/lab3/lab3.html",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "",
+    "text": "In lab 3, we were tasked with multiplexing a dual seven segment display using the decoder and blinker modules that we developed last week in lab. On top of this, we also developed a keypad scanning module, which will serve as a starting block for lab 3. The seven segment display outputted a hexadecimal value based on the respective input bits, and the keypad scanner outputted LED signals when the correct row and column was toggled."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#introduction",
+    "href": "labs/lab3/lab3.html#introduction",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "",
+    "text": "In lab 3, we were tasked with multiplexing a dual seven segment display using the decoder and blinker modules that we developed last week in lab. On top of this, we also developed a keypad scanning module, which will serve as a starting block for lab 3. The seven segment display outputted a hexadecimal value based on the respective input bits, and the keypad scanner outputted LED signals when the correct row and column was toggled."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "href": "labs/lab3/lab3.html#design-and-testing-methodology",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nStarting off, I began to design an implementation for the dual seven segment display, based on the decoder module from lab 1. The frequency that the human eye can perceive as a constant light is approximately 60 Hz. With that being said, I decided to use a frequency of 1k Hz to , multiplex the two displays, since this value is well above that number. In order to achieve this frequency, I utilized the onboard HSOSC to generate a 48 MHz clock signal, then set the maximum counter for the MUX to 24000. The calculation to find this number is given by: \\(muxmax = \\frac{48\\text{ MHz}}{2 \\times 120\\text{ Hz}} = 24,000\\)\nFor the keyboard scanner freqeuncy, I underwent a similar process. Since we wanted all of the columns to be illuminated once with 0.5s, that means each LED would be on for a total of 0.125 s. Given this, each LED would blink twice in one second. In order to achieve this, the keyboard frequency must be 2 Hz, and the maximum counter can be found using: \\(maxCount = {48\\text{ MHz}} {\\times 0.125\\text{ s}} = 6,000,000\\)"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#technical-documentation",
+    "href": "labs/lab3/lab3.html#technical-documentation",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Technical Documentation",
+    "text": "Technical Documentation"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#block-diagram",
+    "href": "labs/lab3/lab3.html#block-diagram",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Block Diagram",
+    "text": "Block Diagram\n[Fig1. Block diagram of the system]"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#schematic",
+    "href": "labs/lab3/lab3.html#schematic",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Schematic",
+    "text": "Schematic\n[Fig2. Seven Segment Decoder schematic]\n[Fig 3. Keypad schematic]\n[Fig 4. Resistor calculations]"
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#results-and-discussion",
+    "href": "labs/lab3/lab3.html#results-and-discussion",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\nTestbench Simulation\n[Fig. 5 scanning generator simulation waveforms]\n[Fig. 6: top level simulation wave forms]\nThe design met all of the intended objectives. The figures above display the Questa Waveform simulation. In order to achieve more precision in the future, a more sophisticated counter would be needed."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#conclusion",
+    "href": "labs/lab3/lab3.html#conclusion",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design met all of the requirements and it successfully display the correct hexadecimal digits on the multiplexed seven segment display. The LED logic is correct and functional as well, and all of the hardware has been verified. The keypad scanner also functioned as expected, the correct LEDs lit up in the order that was based on the row/col value. In total, this lab took approximately 14 hours to complete. The most tedious part was creating the testbenches and debugging the hardware."
+  },
+  {
+    "objectID": "labs/lab3/lab3.html#ai-prototype",
+    "href": "labs/lab3/lab3.html#ai-prototype",
+    "title": "Lab 3: Keypad Scanner",
+    "section": "AI Prototype",
+    "text": "AI Prototype\n\n\n\n\n\n\nNoteAI Generated Code\n\n\n\n\n\n`default_nettype none\n\nmodule seven_seg_mux (\n    input  logic        clk,\n    input  logic        reset,\n\n    input  logic [3:0]  digit0,\n    input  logic [3:0]  digit1,\n\n    output logic [6:0]  seg0,\n    output logic [6:0]  seg1\n);\n\n    // Divider controls the multiplexing rate.\n    // Adjust this value for your clock frequency.\n    logic [15:0] mux_counter;\n    logic        mux_select;\n\n    logic [3:0]  decoder_input;\n    logic [6:0]  decoder_output;\n\n    // ------------------------------------------------------------\n    // Multiplexing clock\n    // ------------------------------------------------------------\n    always_ff @(posedge clk or posedge reset) begin\n        if (reset) begin\n            mux_counter &lt;= '0;\n            mux_select  &lt;= 1'b0;\n        end\n        else begin\n            if (mux_counter == 16'hFFFF) begin\n                mux_counter &lt;= '0;\n                mux_select  &lt;= ~mux_select;\n            end\n            else begin\n                mux_counter &lt;= mux_counter + 1'b1;\n            end\n        end\n    end\n\n    // Select which 4-bit value is presented to the single decoder.\n    always_comb begin\n        if (mux_select)\n            decoder_input = digit1;\n        else\n            decoder_input = digit0;\n    end\n\n    // ------------------------------------------------------------\n    // Single 4-bit -&gt; 7-segment decoder\n    //\n    // Common-anode display:\n    //   0 = segment ON\n    //   1 = segment OFF\n    //\n    // Segment order: {a,b,c,d,e,f,g}\n    // ------------------------------------------------------------\n    always_comb begin\n        case (decoder_input)\n            4'h0: decoder_output = 7'b0000001;\n            4'h1: decoder_output = 7'b1001111;\n            4'h2: decoder_output = 7'b0010010;\n            4'h3: decoder_output = 7'b0000110;\n            4'h4: decoder_output = 7'b1001100;\n            4'h5: decoder_output = 7'b0100100;\n            4'h6: decoder_output = 7'b0100000;\n            4'h7: decoder_output = 7'b0001111;\n            4'h8: decoder_output = 7'b0000000;\n            4'h9: decoder_output = 7'b0000100;\n            4'hA: decoder_output = 7'b0001000;\n            4'hB: decoder_output = 7'b1100000;\n            4'hC: decoder_output = 7'b0110001;\n            4'hD: decoder_output = 7'b1000010;\n            4'hE: decoder_output = 7'b0110000;\n            4'hF: decoder_output = 7'b0111000;\n            default: decoder_output = 7'b1111111;\n        endcase\n    end\n\n    // ------------------------------------------------------------\n    // Store the decoded value for each display.\n    //\n    // Although the decoder is shared, each output retains its\n    // decoded seven-segment pattern after its turn.\n    // ------------------------------------------------------------\n    always_ff @(posedge clk or posedge reset) begin\n        if (reset) begin\n            seg0 &lt;= 7'b1111111;\n            seg1 &lt;= 7'b1111111;\n        end\n        else begin\n            if (mux_select)\n                seg1 &lt;= decoder_output;\n            else\n                seg0 &lt;= decoder_output;\n        end\n    end\n\nendmodule\n\n\n/////Part 2\n\n// mux_display.sv\n// Time-multiplexes one seven-segment decoder between two 4-bit inputs.\n//\n// The decoder is active-low for a common-anode seven-segment display.\n// The two decoded values are driven onto seg0 and seg1.\n\nmodule mux_display #(\n    parameter WIDTH     = 24,\n    parameter MAX_COUNT = 23999\n) (\n    input  logic       clk,\n    input  logic       reset,\n\n    input  logic [3:0] s0,\n    input  logic [3:0] s1,\n\n    output logic [6:0] seg0,\n    output logic [6:0] seg1\n);\n\n    logic select;\n    logic [3:0] decoder_input;\n    logic [6:0] decoder_output;\n\n    // One instance of the provided seven-segment decoder.\n    decoder seg_decoder (\n        .s   (decoder_input),\n        .seg (decoder_output)\n    );\n\n    // Use the provided blinker as a clock divider.\n    // blink toggles whenever the counter reaches MAX_COUNT.\n    blinker #(\n        .WIDTH     (WIDTH),\n        .MAX_COUNT (MAX_COUNT)\n    ) display_timer (\n        .clk   (clk),\n        .reset (reset),\n        .en    (1'b1),\n        .blink (select)\n    );\n\n    // Select which 4-bit value is presented to the single decoder.\n    always_comb begin\n        if (select)\n            decoder_input = s1;\n        else\n            decoder_input = s0;\n    end\n\n    // Route the decoder output to the currently selected display.\n    //\n    // Since the decoder is active-low, the inactive display is\n    // turned completely off with 7'b1111111.\n    always_comb begin\n        if (select) begin\n            seg0 = 7'b1111111;\n            seg1 = decoder_output;\n        end\n        else begin\n            seg0 = decoder_output;\n            seg1 = 7'b1111111;\n        end\n    end\n\nendmodule\n\n\n`default_nettype wire\n\n\n\nFor this AI Prototype, I used a free version of ChatGPT, and I did not sign into an account. I entered in the provided prompt and it gave me a result. Overall, I’d say the quality of the LLM’s output as good but not trustworthy without review. The first version it gave me (seven_seg_mux) was clean, well-commented, and looked like exactly what the lab wanted: a clock divider, a mux select signal, etc. The second version (mux_display) was structured differently and used a couple of constructs I hadn’t worked with directly before: parameterized module instantiation with named parameter overrides (#(.WIDTH(WIDTH), .MAX_COUNT(MAX_COUNT))), and splitting the design across externally instantiated decoder and blinker submodules rather than inlining the logic.The biggest takeaway for me is that the LLM is much better at generating locally-plausible, well-commented RTL than at reasoning about my specific project context."
+  },
+  {
+    "objectID": "posts/third-post.html",
+    "href": "posts/third-post.html",
+    "title": "Hello Quarto, Once More",
+    "section": "",
+    "text": "Lab three taught me the importance of breaking up my code into modules which I can incorporate in future projects."
+  },
+  {
     "objectID": "posts/first-post.html",
     "href": "posts/first-post.html",
     "title": "Hello Quarto",
@@ -151,7 +284,7 @@
     "href": "labs.html",
     "title": "E155 Labs",
     "section": "",
-    "text": "Lab 2: Multiplexed 7-Segment Display\n\n\n\n\n\n\n\n\nSep 16, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1: FPGA and MCU Setup and Testing\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nArthur Cary\n\n\n\n\n\nNo matching items"
+    "text": "Lab 4: Digital Audio\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nLab 3: Keypad Scanner\n\n\n\n\n\n\n\n\nSep 23, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nLab 2: Multiplexed 7-Segment Display\n\n\n\n\n\n\n\n\nSep 16, 2026\n\n\nArthur Cary\n\n\n\n\n\n\n\n\n\n\n\n\nLab 1: FPGA and MCU Setup and Testing\n\n\n\n\n\n\n\n\nSep 9, 2026\n\n\nArthur Cary\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "resources.html",

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Arthur Cary">
+<meta name="dcterms.date" content="2026-09-23">
 
-<title>E155 Labs – E155 Portfolio</title>
+<title>Lab 3: Keypad Scanner – E155 Portfolio</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,25 +31,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-445b8638c3d06994fee0907d791121c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,35 +75,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -135,7 +106,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -145,7 +116,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -156,19 +127,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./labs.html" aria-current="page"> 
+    <a class="nav-link" href="../../labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
+    <a class="nav-link" href="../../resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
 </ul>
@@ -182,22 +153,53 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation</a></li>
+  <li><a href="#block-diagram" id="toc-block-diagram" class="nav-link" data-scroll-target="#block-diagram">Block Diagram</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#testbench-simulation" id="toc-testbench-simulation" class="nav-link" data-scroll-target="#testbench-simulation">Testbench Simulation</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#ai-prototype" id="toc-ai-prototype" class="nav-link" data-scroll-target="#ai-prototype">AI Prototype</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">E155 Labs</h1>
-</div>
+<h1 class="title">Lab 3: Keypad Scanner</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Lab Report</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Arthur Cary </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 23, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,115 +209,236 @@ window.Quarto = {
 </header>
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In lab 3, we were tasked with multiplexing a dual seven segment display using the decoder and blinker modules that we developed last week in lab. On top of this, we also developed a keypad scanning module, which will serve as a starting block for lab 3. The seven segment display outputted a hexadecimal value based on the respective input bits, and the keypad scanner outputted LED signals when the correct row and column was toggled.</p>
+</section>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>Starting off, I began to design an implementation for the dual seven segment display, based on the decoder module from lab 1. The frequency that the human eye can perceive as a constant light is approximately 60 Hz. With that being said, I decided to use a frequency of 1k Hz to , multiplex the two displays, since this value is well above that number. In order to achieve this frequency, I utilized the onboard HSOSC to generate a 48 MHz clock signal, then set the maximum counter for the MUX to 24000. The calculation to find this number is given by: <span class="math inline">\(muxmax = \frac{48\text{ MHz}}{2 \times 120\text{ Hz}} = 24,000\)</span></p>
+<p>For the keyboard scanner freqeuncy, I underwent a similar process. Since we wanted all of the columns to be illuminated once with 0.5s, that means each LED would be on for a total of 0.125 s. Given this, each LED would blink twice in one second. In order to achieve this, the keyboard frequency must be 2 Hz, and the maximum counter can be found using: <span class="math inline">\(maxCount = {48\text{ MHz}} {\times 0.125\text{ s}} = 6,000,000\)</span></p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation</h2>
+</section>
+<section id="block-diagram" class="level2">
+<h2 class="anchored" data-anchor-id="block-diagram">Block Diagram</h2>
+<p>[Fig1. Block diagram of the system]</p>
+</section>
+<section id="schematic" class="level2">
+<h2 class="anchored" data-anchor-id="schematic">Schematic</h2>
+<p>[Fig2. Seven Segment Decoder schematic]</p>
+<p>[Fig 3. Keypad schematic]</p>
+<p>[Fig 4. Resistor calculations]</p>
+</section>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<section id="testbench-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="testbench-simulation">Testbench Simulation</h3>
+<p>[Fig. 5 scanning generator simulation waveforms]</p>
+<p>[Fig. 6: top level simulation wave forms]</p>
+<p>The design met all of the intended objectives. The figures above display the Questa Waveform simulation. In order to achieve more precision in the future, a more sophisticated counter would be needed.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design met all of the requirements and it successfully display the correct hexadecimal digits on the multiplexed seven segment display. The LED logic is correct and functional as well, and all of the hardware has been verified. The keypad scanner also functioned as expected, the correct LEDs lit up in the order that was based on the row/col value. In total, this lab took approximately 14 hours to complete. The most tedious part was creating the testbenches and debugging the hardware.</p>
+</section>
+<section id="ai-prototype" class="level2">
+<h2 class="anchored" data-anchor-id="ai-prototype">AI Prototype</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="AI Generated Code">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>AI Generated Code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="text"><code>`default_nettype none
+
+module seven_seg_mux (
+    input  logic        clk,
+    input  logic        reset,
+
+    input  logic [3:0]  digit0,
+    input  logic [3:0]  digit1,
+
+    output logic [6:0]  seg0,
+    output logic [6:0]  seg1
+);
+
+    // Divider controls the multiplexing rate.
+    // Adjust this value for your clock frequency.
+    logic [15:0] mux_counter;
+    logic        mux_select;
+
+    logic [3:0]  decoder_input;
+    logic [6:0]  decoder_output;
+
+    // ------------------------------------------------------------
+    // Multiplexing clock
+    // ------------------------------------------------------------
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            mux_counter &lt;= '0;
+            mux_select  &lt;= 1'b0;
+        end
+        else begin
+            if (mux_counter == 16'hFFFF) begin
+                mux_counter &lt;= '0;
+                mux_select  &lt;= ~mux_select;
+            end
+            else begin
+                mux_counter &lt;= mux_counter + 1'b1;
+            end
+        end
+    end
+
+    // Select which 4-bit value is presented to the single decoder.
+    always_comb begin
+        if (mux_select)
+            decoder_input = digit1;
+        else
+            decoder_input = digit0;
+    end
+
+    // ------------------------------------------------------------
+    // Single 4-bit -&gt; 7-segment decoder
+    //
+    // Common-anode display:
+    //   0 = segment ON
+    //   1 = segment OFF
+    //
+    // Segment order: {a,b,c,d,e,f,g}
+    // ------------------------------------------------------------
+    always_comb begin
+        case (decoder_input)
+            4'h0: decoder_output = 7'b0000001;
+            4'h1: decoder_output = 7'b1001111;
+            4'h2: decoder_output = 7'b0010010;
+            4'h3: decoder_output = 7'b0000110;
+            4'h4: decoder_output = 7'b1001100;
+            4'h5: decoder_output = 7'b0100100;
+            4'h6: decoder_output = 7'b0100000;
+            4'h7: decoder_output = 7'b0001111;
+            4'h8: decoder_output = 7'b0000000;
+            4'h9: decoder_output = 7'b0000100;
+            4'hA: decoder_output = 7'b0001000;
+            4'hB: decoder_output = 7'b1100000;
+            4'hC: decoder_output = 7'b0110001;
+            4'hD: decoder_output = 7'b1000010;
+            4'hE: decoder_output = 7'b0110000;
+            4'hF: decoder_output = 7'b0111000;
+            default: decoder_output = 7'b1111111;
+        endcase
+    end
+
+    // ------------------------------------------------------------
+    // Store the decoded value for each display.
+    //
+    // Although the decoder is shared, each output retains its
+    // decoded seven-segment pattern after its turn.
+    // ------------------------------------------------------------
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) begin
+            seg0 &lt;= 7'b1111111;
+            seg1 &lt;= 7'b1111111;
+        end
+        else begin
+            if (mux_select)
+                seg1 &lt;= decoder_output;
+            else
+                seg0 &lt;= decoder_output;
+        end
+    end
+
+endmodule
 
 
+/////Part 2
+
+// mux_display.sv
+// Time-multiplexes one seven-segment decoder between two 4-bit inputs.
+//
+// The decoder is active-low for a common-anode seven-segment display.
+// The two decoded values are driven onto seg0 and seg1.
+
+module mux_display #(
+    parameter WIDTH     = 24,
+    parameter MAX_COUNT = 23999
+) (
+    input  logic       clk,
+    input  logic       reset,
+
+    input  logic [3:0] s0,
+    input  logic [3:0] s1,
+
+    output logic [6:0] seg0,
+    output logic [6:0] seg1
+);
+
+    logic select;
+    logic [3:0] decoder_input;
+    logic [6:0] decoder_output;
+
+    // One instance of the provided seven-segment decoder.
+    decoder seg_decoder (
+        .s   (decoder_input),
+        .seg (decoder_output)
+    );
+
+    // Use the provided blinker as a clock divider.
+    // blink toggles whenever the counter reaches MAX_COUNT.
+    blinker #(
+        .WIDTH     (WIDTH),
+        .MAX_COUNT (MAX_COUNT)
+    ) display_timer (
+        .clk   (clk),
+        .reset (reset),
+        .en    (1'b1),
+        .blink (select)
+    );
+
+    // Select which 4-bit value is presented to the single decoder.
+    always_comb begin
+        if (select)
+            decoder_input = s1;
+        else
+            decoder_input = s0;
+    end
+
+    // Route the decoder output to the currently selected display.
+    //
+    // Since the decoder is active-low, the inactive display is
+    // turned completely off with 7'b1111111.
+    always_comb begin
+        if (select) begin
+            seg0 = 7'b1111111;
+            seg1 = decoder_output;
+        end
+        else begin
+            seg0 = decoder_output;
+            seg1 = 7'b1111111;
+        end
+    end
+
+endmodule
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TGFiJTIwUmVwb3J0" data-listing-date-sort="1790751600000" data-listing-file-modified-sort="1790808204430" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2159">
-<div class="thumbnail"><a href="./labs/lab4/lab4.html" class="no-external">
+`default_nettype wire</code></pre>
+</div>
+</div>
+</div>
+<p>For this AI Prototype, I used a free version of ChatGPT, and I did not sign into an account. I entered in the provided prompt and it gave me a result. Overall, I’d say the quality of the LLM’s output as good but not trustworthy without review. The first version it gave me (seven_seg_mux) was clean, well-commented, and looked like exactly what the lab wanted: a clock divider, a mux select signal, etc. The second version (mux_display) was structured differently and used a couple of constructs I hadn’t worked with directly before: parameterized module instantiation with named parameter overrides (#(.WIDTH(WIDTH), .MAX_COUNT(MAX_COUNT))), and splitting the design across externally instantiated decoder and blinker submodules rather than inlining the logic.The biggest takeaway for me is that the LLM is much better at generating locally-plausible, well-commented RTL than at reasoning about my specific project context.</p>
 
-<p class="card-img-top"><img loading='lazy' src="labs/lab4/images/Fur_Elise.jpeg"  class="thumbnail-image card-img"/></p>
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab4/lab4.html" class="no-external">Lab 4: Digital Audio</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab4/lab4.html" class="no-external">
-In lab 4, we were tasked with using the STM32L432KC microcontroller to play music on an external peripheral. The MCU reads a list of notes, where each note gives a pitch in…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab4/lab4.html" class="no-external">
-<div class="listing-date">
-Sep 30, 2026
-</div>
-<div class="listing-author">
-Arthur Cary
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="TGFiJTIwUmVwb3J0" data-listing-date-sort="1790146800000" data-listing-file-modified-sort="1790739236421" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1952">
-<div class="thumbnail"><a href="./labs/lab3/lab3.html" class="no-external">
+</section>
 
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab3/lab3.html" class="no-external">Lab 3: Keypad Scanner</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab3/lab3.html" class="no-external">
-In lab 3, we were tasked with multiplexing a dual seven segment display using the decoder and blinker modules that we developed last week in lab. On top of this, we also…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab3/lab3.html" class="no-external">
-<div class="listing-date">
-Sep 23, 2026
-</div>
-<div class="listing-author">
-Arthur Cary
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="TGFiJTIwUmVwb3J0" data-listing-date-sort="1789542000000" data-listing-file-modified-sort="1789588471795" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1952">
-<div class="thumbnail"><a href="./labs/lab2/lab2.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="labs/lab2/images/block_diagram.jpeg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab2/lab2.html" class="no-external">Lab 2: Multiplexed 7-Segment Display</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab2/lab2.html" class="no-external">
-In lab 2, we were tasked with multiplexing a dual seven segment display using the decoder and blinker modules that we developed last week in lab. On top of this, we also…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab2/lab2.html" class="no-external">
-<div class="listing-date">
-Sep 16, 2026
-</div>
-<div class="listing-author">
-Arthur Cary
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="TGFiJTIwUmVwb3J0" data-listing-date-sort="1788937200000" data-listing-file-modified-sort="1789587565511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="743">
-<div class="thumbnail"><a href="./labs/lab1/lab1.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="labs/lab1/images/block_diagram.jpeg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./labs/lab1/lab1.html" class="no-external">Lab 1: FPGA and MCU Setup and Testing</a>
-</h3>
-<div class="delink listing-description"><a href="./labs/lab1/lab1.html" class="no-external">
-In lab 1, we were tasked with assembling the microP’s board, and demonstrate that the onboard oscillator, 4 bit switch, and LEDs function, in conjunction with an external…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./labs/lab1/lab1.html" class="no-external">
-<div class="listing-date">
-Sep 9, 2026
-</div>
-<div class="listing-author">
-Arthur Cary
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
